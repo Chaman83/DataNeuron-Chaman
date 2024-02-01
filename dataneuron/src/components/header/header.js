@@ -7,7 +7,7 @@ const data = [
         details : "list employee"
     }
 ]
-const Navbar = (props) => {
+const Header = (props) => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,4 +29,4 @@ const Navbar = (props) => {
     )
 }
 
-export default Navbar;
+export default Header;
