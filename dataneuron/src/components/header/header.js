@@ -1,32 +1,45 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import AddEmployee from "../form/form";
 
-const data = [
+const HeaderData = [
     {
-        title : "DataNeuron",
-        form : "add employee",
-        details : "list employee"
+        title: "DataNeuron",
+        form: "add employee",
+        details: "list employee"
     }
-]
-const Header = (props) => {
+];
 
+const Header = (props) => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="#">{props.title}</a>
-            {data.map((item,index)=>(
-                <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                    <li className="nav-item active">
-                        <a className="nav-link" href="#">{item.form}</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">{item.details}</a>
-                    </li>
-                </ul>
-            </div>
-            ))}
-            
-        </nav>
-    )
-}
+        <Router>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                {HeaderData.map((item,index) =>(
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent" key={index}>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">{item.title}</a>
+                        </li>
+                        <li class="nav-item">
+                            <Link to="/addEmployee"><p>{item.form}</p></Link>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
+                ))} 
+            </nav>
+            <Routes>
+                <Route path="/addEmployee" element={<AddEmployee />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default Header;
